@@ -1,0 +1,45 @@
+﻿
+
+Database connectivity
+
+Provider: SQL Server-- SqlClient
+		Oracle		---- OracleClient
+		OLESB-----------OLEDB
+		ODBC---------ODBC
+	----------------------------
+	1) Install it using Nuget Package Manager
+	2) What architecture ?
+	
+	1) Connected : The Client is connected to the DB Server till the application is running.
+	Real  Time apps where life, money and property is involved.
+	1) Share Market
+	2) Banks/UPI etc
+
+	2) Disconnected : The Client connects to the DB Server, works with it, 
+	once the work is completed,	it disconnects from the db server.
+	----------------------------------------------------------------
+
+	UI--- Windows App--- Lables, text box ,buttons , list box etc
+	DAL---Data  Access  Layer Library------ 
+	Class: 
+	1) ProductsOperations--->
+	      void Insert (Product obj) {}
+		  void Update (Product obj) {}
+		  void Delete (int id) {}
+		  void Search (int id) {}
+		  void Search (string prodname) {}
+		  
+    Business Logic Layer
+
+
+
+	DB server---- mazenet test---- sql server mgt studio
+
+
+
+
+
+
+
+
+
