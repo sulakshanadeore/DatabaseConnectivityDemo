@@ -50,7 +50,64 @@ namespace BusinessLogicLayerLibrary
         }
 
         CategoriesOperations operations = new CategoriesOperations();
-    
+
+        public List<ProductsBAL> FindProductByCategoryIDAndOrderBySupplierid(int id)
+        {
+            List<Products> plist=operations.GetProductsByCategory(id);
+
+             List<ProductsBAL> productListBal = new List<ProductsBAL>();
+            foreach (var item in plist)
+            {
+                ProductsBAL product = new ProductsBAL();
+                product.Productid = item.Prodid;
+                product.Productname = item.Prodname;
+                product.UnitPrice = item.Price;
+                product.Supplierid = item.Suppid;
+                productListBal.Add(product);
+            }
+
+
+            //var data = (from p in productListBal
+            //           orderby p.Supplierid
+            //           select p).ToList();
+
+            var data=productListBal.OrderBy(p=>p.Supplierid).ToList();
+
+            return data;
+
+        }
+
+        public List<ProductsBAL> FindProductByCategoryIDAndOrderByProductName(int id)
+        {
+            List<Products> plist = operations.GetProductsByCategory(id);
+
+            List<ProductsBAL> productListBal = new List<ProductsBAL>();
+            foreach (var item in plist)
+            {
+                ProductsBAL product = new ProductsBAL();
+                product.Productid = item.Prodid;
+                product.Productname = item.Prodname;
+                product.UnitPrice = item.Price;
+                product.Supplierid = item.Suppid;
+                productListBal.Add(product);
+            }
+
+
+            //var data = (from p in productListBal
+            //           orderby p.Supplierid
+            //           select p).ToList();
+
+            var data = productListBal.OrderBy(p => p.Productname).ToList();
+
+            return data;
+
+        }
+
+
+
+
+
+
         public List<CategoryBAL> CategoryList() 
         {
            List<Category> Categorieslist= operations.ShowAll();

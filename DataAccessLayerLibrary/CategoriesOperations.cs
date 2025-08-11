@@ -9,6 +9,39 @@ namespace DataAccessLayerLibrary
             "Integrated Security=true;" +
             "database=northwind;TrustServerCertificate=true";
 
+
+        public List<Products> GetProductsByCategory(int id)
+        {
+        SqlConnection cn=new SqlConnection(connectionString);
+            SqlCommand cmd_search = new SqlCommand("select productid,productname,unitprice,Supplierid from products where categoryid=@catid", cn);
+            cn.Open();
+            cmd_search.Parameters.AddWithValue("@catid", id);
+            SqlDataReader dr=cmd_search.ExecuteReader();
+
+            List<Products> productsList = new List<Products>();
+            if (dr!=null)
+            {
+                while (dr.Read())
+                {
+                    Products product = new Products();
+                    product.Prodid = Convert.ToInt32(dr["ProductID"]);
+                    product.Prodname = dr["ProductName"].ToString();
+                    product.Price =Convert.ToDouble(dr["UnitPrice"]);
+                    product.Suppid = Convert.ToInt32(dr["SupplierID"]);
+                    productsList.Add(product);
+
+                }
+
+            }
+            cn.Close();
+            cn.Dispose();
+            return productsList;
+
+
+        }
+
+
+
         public List<Category> ShowAll()
         {
             List<Category> categories = new List<Category>();
