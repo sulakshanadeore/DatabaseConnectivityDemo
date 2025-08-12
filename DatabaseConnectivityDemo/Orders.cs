@@ -24,7 +24,20 @@ namespace DatabaseConnectivityDemo
             DataTable ordersDetails= bal.GetOrderList(Convert.ToInt32(textBox1.Text),out double finalPrice);
             finalPrice=Math.Round(finalPrice, 2);
             MessageBox.Show(finalPrice.ToString());
-            dataGridView1.DataSource = ordersDetails;
+            var result = (from row in ordersDetails.AsEnumerable()
+                       //  where row.Field<int>("Orderid") == Convert.ToInt32(textBox1.Text)
+                         select new
+                         {
+                             Productid = row.Field<int>("Productid"),
+                             Qty = row.Field<short>("Quantity"),
+                             Price = row.Field<decimal>("UnitPrice"),
+                             Dis = row.Field<float>("Discount"),
+
+                         }).ToList();
+            dataGridView1.DataSource = result;
+            //orderid,productid,qty,price,discount
+
+            //dataGridView1.DataSource = ordersDetails;
         }
 
         private void Orders_Load(object sender, EventArgs e)
