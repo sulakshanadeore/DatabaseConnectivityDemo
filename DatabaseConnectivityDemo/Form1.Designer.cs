@@ -1,6 +1,6 @@
 ﻿namespace DatabaseConnectivityDemo
 {
-    partial class Orders
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -28,49 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            button1 = new Button();
             dataGridView1 = new DataGridView();
+            textBox1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(168, 67);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 27);
-            textBox1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(168, 127);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 1;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(124, 162);
+            dataGridView1.Location = new Point(212, 98);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(618, 188);
-            dataGridView1.TabIndex = 2;
+            dataGridView1.Size = new Size(423, 176);
+            dataGridView1.TabIndex = 0;
             // 
-            // Orders
+            // textBox1
+            // 
+            textBox1.Location = new Point(496, 302);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(125, 27);
+            textBox1.TabIndex = 1;
+            // 
+            // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(dataGridView1);
-            Controls.Add(button1);
             Controls.Add(textBox1);
-            Name = "Orders";
-            Text = "Orders";
-            Load += Orders_Load;
+            Controls.Add(dataGridView1);
+            Name = "Form1";
+            Text = "Form1";
+            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -78,8 +66,7 @@
 
         #endregion
 
-        private TextBox textBox1;
-        private Button button1;
         private DataGridView dataGridView1;
+        private TextBox textBox1;
     }
 }

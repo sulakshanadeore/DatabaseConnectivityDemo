@@ -24,11 +24,14 @@ namespace DataAccessLayerLibrary
             cmd_orders.Parameters.AddWithValue("@ordid",orderid);   
             SqlDataReader dr=cmd_orders.ExecuteReader();//datareader only read access
 
-            DataTable dt = new DataTable();//has read/write access(both)
+            DataTable dt = new DataTable();//has read/write access(both), secondly also it is in-memory object, so 
+            //we have filled the data from the datareader to the datatable
+
              dt.Load(dr);//in memory object is created and has the data loaded into it
 
             cn.Close();
             cn.Dispose();
+
             finalPrice = 0;
 
             //List<OrdersDet> orderDetails = new List<OrdersDet>();
@@ -40,7 +43,7 @@ namespace DataAccessLayerLibrary
 
                 DataRow item1 = dt.Rows[i];
                 
-                    if (Convert.ToInt32(item1["Discount"])!= 0)
+                    if (Convert.ToDouble(item1["Discount"])!= 0)
                     {
                     Double price=Convert.ToInt32(item1["UnitPrice"]) * Convert.ToInt32(item1["Quantity"]);
                         finalPrice =  price - (price * Convert.ToDouble(item1["Discount"]));

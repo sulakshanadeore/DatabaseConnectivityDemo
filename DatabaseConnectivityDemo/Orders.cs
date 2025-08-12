@@ -21,8 +21,15 @@ namespace DatabaseConnectivityDemo
         private void button1_Click(object sender, EventArgs e)
         {
             OrderDetailsBAL bal = new OrderDetailsBAL();
-            double finalPrice=bal.GetOrderList(Convert.ToInt32(textBox1.Text));
+            DataTable ordersDetails= bal.GetOrderList(Convert.ToInt32(textBox1.Text),out double finalPrice);
+            finalPrice=Math.Round(finalPrice, 2);
             MessageBox.Show(finalPrice.ToString());
+            dataGridView1.DataSource = ordersDetails;
+        }
+
+        private void Orders_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
